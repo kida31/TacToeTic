@@ -4,6 +4,9 @@ using Game;
 
 public partial class Cell : Node2D
 {
+    private const float OverlayFadeInSpeed = 8f;
+    private const float OverlayFadeOutSpeed = 2f;
+
     public event Action Pressed;
     
     public Game.Cell CellReference { get; private set; }
@@ -12,7 +15,7 @@ public partial class Cell : Node2D
     private Sprite2D _icon;
     private Node2D _overlay;
     private Sprite2D _overlayIcon;
-    private Label _label;
+    private Label _debugLabel;
     // Resources
     private Texture2D _crossIcon;
     private Texture2D _circleIcon;
@@ -30,7 +33,7 @@ public partial class Cell : Node2D
         _icon = GetNode<Sprite2D>("%Icon");
         _overlay = GetNode<Node2D>("%Overlay");
         _overlayIcon = _overlay.GetNode<Sprite2D>("Icon");
-        _label = GetNode<Label>("%Label");
+        _debugLabel = GetNode<Label>("%DebugLabel");
         
         // Resources
         _crossIcon = GD.Load<Texture2D>("res://assets/ttt_cross_white.png");
@@ -68,7 +71,8 @@ public partial class Cell : Node2D
     {
         if (_isSelected)
         {
-            _overlay.Modulate = Colors.White;
+            _overlay.Modulate = _overlay.Modulate.Lerp(Colors.White, (float) delta * OverlayFadeInSpeed);
+            
             if (_matchReference != null)
             {
                 _overlayIcon.Texture = _matchReference.CurrentPlayer == Player.Circle ? _circleIcon : _crossIcon;
@@ -81,7 +85,7 @@ public partial class Cell : Node2D
         }
         else
         {
-            _overlay.Modulate = _overlay.Modulate.Lerp(new Color(0f, 0f, 0f, 0.0f), (float) delta * 2f);
+            _overlay.Modulate = _overlay.Modulate.Lerp(new Color(0f, 0f, 0f, 0.0f), (float) delta * OverlayFadeOutSpeed);
         }
         
         switch (CellReference?.OwnedBy)
@@ -109,7 +113,7 @@ public partial class Cell : Node2D
             shader?.SetShaderParameter("isFlashing", false);
         }
         
-        _label.Text = CellReference?.Duration.ToString();
+        _debugLabel.Text = CellReference?.Duration.ToString();
         
         
     }
