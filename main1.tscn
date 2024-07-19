@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://b23uiqapk0iqf"]
+
+[ext_resource type="Script" path="res://Main.cs" id="1_ke6ir"]
+[ext_resource type="PackedScene" uid="uid://ds7r4wcv0w1g" path="res://grid/grid.tscn" id="2_tgc7s"]
+[ext_resource type="Script" path="res://GUI.cs" id="3_c2ydq"]
+
+[sub_resource type="Environment" id="Environment_bu3db"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 1.46
+glow_blend_mode = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1udg"]
+font_size = 64
+
+[node name="Main" type="Node" node_paths=PackedStringArray("_gameGrid", "_gui", "_newGameButton")]
+script = ExtResource("1_ke6ir")
+_gameGrid = NodePath("Grid")
+_gui = NodePath("GUI")
+_newGameButton = NodePath("GUI/Button")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bu3db")
+
+[node name="Grid" parent="." instance=ExtResource("2_tgc7s")]
+position = Vector2(192, 192)
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+script = ExtResource("3_c2ydq")
+
+[node name="PlayerTurnLabel" type="Label" parent="GUI"]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 11.0
+offset_right = 506.0
+offset_bottom = 34.0
+text = "Player X's Turn"
+
+[node name="GameOverLabel" type="Label" parent="GUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 97.0
+offset_right = 375.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER
+YOU LOSE"
+label_settings = SubResource("LabelSettings_p1udg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GUI"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 339.0
+offset_right = 493.0
+offset_bottom = 370.0
+text = "New Game"

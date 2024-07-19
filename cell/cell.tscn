@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://da24pj3guggqs"]
+
+[ext_resource type="Script" path="res://cell/Cell.cs" id="1_eop1e"]
+[ext_resource type="Texture2D" uid="uid://iqwyd2rfkejd" path="res://assets/ttt_cross_white.png" id="2_i8nh2"]
+[ext_resource type="Texture2D" uid="uid://dh633se2dfm0t" path="res://assets/ttt_circle_white.png" id="3_77tj8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nklie"]
+size = Vector2(128, 128)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bljlq"]
+bg_color = Color(1, 1, 1, 0.247059)
+
+[node name="Cell" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_eop1e")
+
+[node name="Icon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_i8nh2")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "99"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+top_level = true
+shape = SubResource("RectangleShape2D_nklie")
+
+[node name="Overlay" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Panel" type="Panel" parent="Overlay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_bljlq")
+
+[node name="Icon" type="Sprite2D" parent="Overlay"]
+modulate = Color(1, 1, 1, 0.247059)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("3_77tj8")
