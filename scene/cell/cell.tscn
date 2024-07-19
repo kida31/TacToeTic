@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://da24pj3guggqs"]
 
-[ext_resource type="Script" path="res://cell/Cell.cs" id="1_eop1e"]
+[ext_resource type="Script" path="res://scene/cell/Cell.cs" id="1_eop1e"]
 [ext_resource type="Texture2D" uid="uid://iqwyd2rfkejd" path="res://assets/ttt_cross_white.png" id="2_i8nh2"]
 [ext_resource type="Texture2D" uid="uid://dh633se2dfm0t" path="res://assets/ttt_circle_white.png" id="3_77tj8"]
 

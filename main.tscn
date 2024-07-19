@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b23uiqapk0iqf"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_ke6ir"]
-[ext_resource type="PackedScene" uid="uid://ds7r4wcv0w1g" path="res://grid/grid.tscn" id="2_tgc7s"]
-[ext_resource type="Script" path="res://GUI.cs" id="3_c2ydq"]
+[ext_resource type="PackedScene" uid="uid://ds7r4wcv0w1g" path="res://scene/grid/grid.tscn" id="2_tgc7s"]
+[ext_resource type="Script" path="res://scene/GUI.cs" id="3_c2ydq"]
 
 [sub_resource type="Environment" id="Environment_bu3db"]
 background_mode = 3

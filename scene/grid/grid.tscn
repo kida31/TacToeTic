@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ds7r4wcv0w1g"]
 
-[ext_resource type="Script" path="res://grid/Grid.cs" id="1_kn33u"]
-[ext_resource type="PackedScene" uid="uid://da24pj3guggqs" path="res://cell/cell.tscn" id="3_cch7n"]
+[ext_resource type="Script" path="res://scene/grid/Grid.cs" id="1_kn33u"]
+[ext_resource type="PackedScene" uid="uid://da24pj3guggqs" path="res://scene/cell/cell.tscn" id="3_cch7n"]
 
 [node name="Grid" type="Node2D"]
 script = ExtResource("1_kn33u")
