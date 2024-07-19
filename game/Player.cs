@@ -13,8 +13,8 @@ static class PlayerUtil
     {
         return player switch
         {
-            Player.Circle => "RED",
-            Player.Cross => "BLUE",
+            Player.Circle => "O",
+            Player.Cross => "X",
             _ => "???"
         };
     }
