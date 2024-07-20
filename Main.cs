@@ -4,17 +4,13 @@ using Game;
 
 public partial class Main : Node
 {
-    private Match _currentMatch = null;
+    private Match _currentMatch;
     private Player _lastPlayerWentFirst = Player.None;
 
-    [Export]
-    private Grid _gameGrid;
+    [Export] private Grid _gameGrid;
 
-    [Export]
-    private GUI _gui;
+    [Export] private GUI _gui;
 
-    [Export]
-    private Button _newGameButton;
 
     private Logger logger;
 
@@ -26,10 +22,8 @@ public partial class Main : Node
         logger.Info($"GameGrid = {_gameGrid?.Name}");
         logger.Info($"GUI = {_gui?.Name}");
 
-        if (_newGameButton != null)
-        {
-            _newGameButton.Pressed += StartNewMatch;
-        }
+        GetNode<Button>("%NewGameButton").Pressed += StartNewMatch;
+        GetNode<Button>("%CloseGameButton").Pressed += CloseGame;
 
         StartNewMatch();
     }
@@ -72,5 +66,11 @@ public partial class Main : Node
 
 
         logger?.Info("New game started");
+    }
+
+    private void CloseGame()
+    {
+        logger.Info("Closing game...");
+        GetTree().Quit();
     }
 }

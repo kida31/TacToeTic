@@ -5,17 +5,17 @@ using Game;
 public partial class GUI : Control
 {
     private Match _currentMatch = null;
-    private Label _playerTurnLabel;
-    private Label _gameOverLabel;
+    private RichTextLabel _gameOverLabel;
+    private CanvasItem _dimOverlay;
 
     private Logger _logger;
 
     public override void _Ready()
     {
         _logger = Logger.newForNode(this);
-        _gameOverLabel = GetNode<Label>("GameOverLabel");
+        _gameOverLabel = GetNode<RichTextLabel>("%GameOverLabel");
         if (_gameOverLabel == null) _logger.Error("GameOver Label is missing");
-        if (_currentMatch == null) _logger.Error("Match not set");
+        _dimOverlay = GetNode<CanvasItem>("%DimOverlay");
 
         _logger.Info("Ready");
     }
@@ -31,14 +31,14 @@ public partial class GUI : Control
         _currentMatch.MatchOver += OnMatchOver;
 
         _gameOverLabel.Hide();
-        _playerTurnLabel.Show();
+        _dimOverlay.Hide();
     }
 
     private void OnMatchOver(Player winner)
     {
-        _gameOverLabel.Text = $"GAME OVER\n{PlayerUtil.PlayerToString(winner)} wins";
+        _gameOverLabel.Text = $"[center]GAME OVER\n[color=orange]{PlayerUtil.PlayerToString(winner)}[/color] wins[/center]";
 
         _gameOverLabel.Show();
-        _playerTurnLabel.Hide();
+        _dimOverlay.Show();
     }
 }

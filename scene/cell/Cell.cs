@@ -83,7 +83,6 @@ public partial class Cell : Node2D
             }
             else
             {
-                GD.Print("EMPTY");
                 _overlayIcon.Texture = null;
             }
         }
