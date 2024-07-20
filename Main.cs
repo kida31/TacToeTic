@@ -10,8 +10,7 @@ public partial class Main : Node
     [Export] private Grid _gameGrid;
 
     [Export] private GUI _gui;
-
-
+    
     private Logger logger;
 
     public override void _Ready()
